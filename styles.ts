@@ -1,13 +1,13 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-	container: {
+    container: {
         flex: 1,
-        backgroundColor: '#333745',
+        backgroundColor: '#333745'
     },
     containerInput: {
-		padding: 15,
-		flexDirection: 'row',
+        padding: 15,
+        flexDirection: 'row',
         justifyContent: 'space-between',
         marginBottom: 10
     },
@@ -19,14 +19,14 @@ export const styles = StyleSheet.create({
         color: '#c7efcf',
         marginBottom: 10
     },
-	textInput: {
-		borderColor: '#b18fcf',
-		borderBottomWidth: 1,
-		marginBottom: 10,
-		width: '70%',
-		height: 40,
-		fontSize: 14,
-		color: '#978897'
+    textInput: {
+        borderColor: '#b18fcf',
+        borderBottomWidth: 1,
+        marginBottom: 10,
+        width: '70%',
+        height: 40,
+        fontSize: 14,
+        color: '#978897'
     },
     modalContainerContent: {
         backgroundColor: '#ccc',
@@ -55,5 +55,5 @@ export const styles = StyleSheet.create({
     modalButton: {
         marginVertical: 10,
         paddingHorizontal: 25
-    },
-})
+    }
+});
