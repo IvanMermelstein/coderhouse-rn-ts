@@ -1,25 +1,17 @@
 import React, { FC, useState } from 'react';
-import {
-    Button,
-    FlatList,
-    Modal,
-    SafeAreaView,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
-} from 'react-native';
+import { Button, SafeAreaView, View } from 'react-native';
 import { styles } from './styles';
-import { TextList } from '../types';
+import { TextList } from './types';
 import Input from './components/atoms/Input';
 import CustomModal from './components/molecules/CustomModal';
+import List from './components/atoms/List';
 
 const App: FC = () => {
     const [text, setText] = useState<string>('');
     const [textList, setTextList] = useState<TextList[]>([]);
     const [modalVisible, setModalVisible] = useState<boolean>(false);
     const [selectedItem, setSelectedItem] = useState<TextList>({
-        id: 0,
+        id: '',
         value: ''
     });
 
@@ -32,7 +24,7 @@ const App: FC = () => {
             setTextList([
                 ...textList,
                 {
-                    id: textList.length + 1,
+                    id: Math.random().toString(16).slice(2),
                     value: text
                 }
             ]);
@@ -42,7 +34,7 @@ const App: FC = () => {
 
     const handleDeleteItem = (selectedItem: TextList) => {
         const newList = textList.filter(item => item.id !== selectedItem.id);
-        setSelectedItem({ id: 0, value: '' });
+        setSelectedItem({ id: '', value: '' });
         setTextList(newList);
         setModalVisible(!modalVisible);
     };
@@ -62,21 +54,9 @@ const App: FC = () => {
                 />
                 <Button title='Add' color='#c7efcf' onPress={() => addItem()} />
             </View>
-            <View style={styles.containerList}>
-                <FlatList
-                    data={textList}
-                    renderItem={({ item }) => (
-                        <TouchableOpacity onPress={() => onHandleModal(item)}>
-                            <Text style={styles.textList}>
-                                {item.id} - {item.value}
-                            </Text>
-                        </TouchableOpacity>
-                    )}
-                    keyExtractor={item => item.id.toString()}
-                />
-            </View>
+            <List textList={textList} onHandleModal={onHandleModal} />
             <CustomModal
-                title='Titulo'
+                title='Confirmation'
                 description='Do you want to delete this item?'
                 selectedItem={selectedItem}
                 buttonText='Yes'

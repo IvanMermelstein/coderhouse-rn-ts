@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Button, Modal, Text, View } from 'react-native';
-import { TextList } from '../../../../types';
+import { TextList } from '../../../types';
 import { styles } from './styles';
 
 interface CustomModalProps {
@@ -33,7 +33,11 @@ const CustomModal: FC<CustomModalProps> = ({
                     </Text>
                 </View>
                 <View style={styles.modalButton}>
-                    <Button title={buttonText} color='#c7efcf' onPress={() => onHandlehandleDeleteItem(selectedItem)} />
+                    <Button
+                        title={buttonText}
+                        color='#c7efcf'
+                        onPress={() => onHandlehandleDeleteItem(selectedItem)}
+                    />
                 </View>
             </View>
         </Modal>
